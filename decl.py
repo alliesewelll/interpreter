@@ -6,7 +6,7 @@ class Decl:
         self.ids = []
     
     def parse(self, scanner, context):
-        expect(scanner, RESERVED_KEYWORDS["int"], "Expected 'int'")
+        expect(scanner, RESERVED_KEYWORDS["int"])
         
         if scanner.getToken() != TOK_ID:
             raise Exception("Expected identifier after 'int'")
@@ -29,4 +29,7 @@ class Decl:
             self.ids.append(id_name)   
             scanner.skipToken()
             
-        expect(scanner, SYMBOLS[';'], "Expected ';' at end of declaration")
+        expect(scanner, SYMBOLS[';'])
+        
+    def print(self, indent = 0):
+        print("    " * indent + "int " + ", ".join(self.ids) + ";")
