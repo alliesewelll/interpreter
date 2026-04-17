@@ -1,7 +1,7 @@
 from tokenizer import TOK_ID, TOK_INT, SYMBOLS
 from parse_utils import expect
 
-class Factor:
+class Op:
     def __init__(self):
         self.kind = None
         self.int_value = None
@@ -50,6 +50,6 @@ class Factor:
         if self.kind == "int":
             return self.int_value
         elif self.kind == "id":
-            return runtime.get(self.id_name)
+            return runtime.get_value(self.id_name)
         elif self.kind == "expr":
             return self.expr.evaluate(runtime)

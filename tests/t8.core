@@ -1,0 +1,11 @@
+program
+int X;
+begin
+X = 5;
+if (X < 3) then
+    write X;
+else
+    X = X + 1;
+    write X;
+end;
+end

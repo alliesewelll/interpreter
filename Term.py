@@ -1,29 +1,28 @@
-from factor import Factor
+from op import Op
 from tokenizer import SYMBOLS
 
 class Term:
     def __init__(self):
         self.first_factors = None
-        self.rest_factors = []
+        self.rest_factors = None
         
     def parse(self, scanner, context):
-        self.first_factor = Factor()
-        self.first_factor.parse(scanner, context)
+        self.first_factors = Op()
+        self.first_factors.parse(scanner, context)
         
-        while scanner.getToken() == SYMBOLS["*"]:
+        if scanner.getToken() == SYMBOLS["*"]:
             scanner.skipToken()
-            factor = Factor()
-            factor.parse(scanner, context)
-            self.rest_factors.append(factor)
+            self.rest_factors = Term()
+            self.rest_factors.parse(scanner, context)
             
     def print(self):
-        self.first_factor.print()
-        for factor in self.rest_factors:
+        self.first_factors.print()
+        if self.rest_factors is not None:
             print(" * ", end="")
-            factor.print()
+            self.rest_factors.print()
             
     def evaluate(self, runtime):
-        value = self.first_factor.evaluate(runtime)
-        for factor in self.rest_factors:
-            value *= factor.evaluate(runtime)
-        return value
+        left_value = self.first_factors.evaluate(runtime)
+        if self.rest_factors is None:
+            return left_value
+        return left_value * self.rest_factors.evaluate(runtime)

@@ -1,0 +1,9 @@
+program
+int X;
+begin
+X = 0;
+while (X < 3) loop
+    write X;
+    X = X + 1;
+end;
+end

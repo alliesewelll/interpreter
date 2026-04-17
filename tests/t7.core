@@ -1,0 +1,8 @@
+program
+int X;
+begin
+X = 5;
+if (X < 10) then
+    write X;
+end;
+end
