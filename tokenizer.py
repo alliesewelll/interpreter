@@ -151,7 +151,7 @@ class Tokenizer:
                 val = line[j:k]
                 # could be reserved word ONLY if it matches exactly (reserved words are lowercase)
                 # so uppercase-start means it's an ID, not reserved.
-                out.append((TOK_ID, lex))
+                out.append((TOK_ID, val))
                 j = k
                 continue
 
