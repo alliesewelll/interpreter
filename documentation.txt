@@ -1,0 +1,45 @@
+Overview / Design:
+
+Implemented a Tokenizer class with OTLA interface: getToken(), skipToken(), intVal(), idName().
+
+Tokenization is performed one line at a time by a private method (e.g., _tokenizeLine()), which:
+
+Skips whitespace-only lines
+
+Scans characters left-to-right
+
+Uses greedy handling for 2-character operators (!=, ==, <=, >=, &&, ||)
+
+Stores tokens in a list of (token_number, lexeme) pairs and resets a cursor index to 0
+
+getToken() returns the current token number without advancing; skipToken() advances the cursor and loads the next line when needed.
+
+Illegal tokens produce token 34 and stop further scanning of that line.
+
+User Manual:
+
+Run: python3 tokenizer.py <inputfile>
+
+Output: prints token numbers, one per line, until EOF (33) or error (34).
+
+Integers are reported as token 31; identifiers as token 32 (actual values accessible via intVal() / idName() for the parser).
+
+Testing:
+
+Tested reserved words, identifiers, integers, and special symbols.
+
+Tested greedy operators: <= >= == != && ||
+
+Tested whitespace variations (tabs/spaces, no spaces around symbols).
+
+Tested illegal tokens:
+
+Misspelled keyword (e.g., progrem)
+
+Lowercase inside identifier (e.g., ABCend)
+
+Unknown character (e.g., @)
+
+Known Bugs / Missing Features:
+
+“No known remaining bugs. All required token types and greedy operators are implemented.”
