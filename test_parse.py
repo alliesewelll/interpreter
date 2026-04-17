@@ -2,7 +2,7 @@ from tokenizer import Tokenizer
 from parse_context import ParseContext
 from prog import Prog
 
-scanner = Tokenizer("tests/t4.core")
+scanner = Tokenizer("tests/t5.core")
 ctx = ParseContext()
 p = Prog()
 

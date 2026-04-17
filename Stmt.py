@@ -1,7 +1,7 @@
 from tokenizer import TOK_ID, RESERVED_KEYWORDS
 from assign import Assign
-from input import In
-from output import Out
+from in_stmt import InStmt
+from out_stmt import OutStmt
 from if_stmt import If
 from loop import Loop
 
@@ -15,10 +15,10 @@ class Stmt:
             self.stmt = Assign()
             self.stmt.parse(scanner, context)
         elif token == RESERVED_KEYWORDS["read"]:
-            self.stmt = In()
+            self.stmt = InStmt()
             self.stmt.parse(scanner, context)
         elif token == RESERVED_KEYWORDS["write"]:
-            self.stmt = Out()
+            self.stmt = OutStmt()
             self.stmt.parse(scanner, context)
         elif token == RESERVED_KEYWORDS["if"]:
             self.stmt = If()
