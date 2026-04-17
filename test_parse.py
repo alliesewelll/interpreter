@@ -2,10 +2,10 @@ from tokenizer import Tokenizer
 from parse_context import ParseContext
 from prog import Prog
 
-scanner = Tokenizer("tests/t5.core")
-ctx = ParseContext()
+scanner = Tokenizer("tests/t6.core")
+context = ParseContext()
 p = Prog()
 
-p.parse(scanner, ctx)
+p.parse(scanner, context)
 p.print(1)
-print("Declared:", ctx.declared)
+print("Declared:", context.declared)

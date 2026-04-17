@@ -1,0 +1,7 @@
+program
+int X, Y;
+begin
+X = 5;
+Y = X + 3 * 2;
+write Y;
+end

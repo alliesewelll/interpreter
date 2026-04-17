@@ -1,4 +1,4 @@
-from tokenizer import RESERVED_KEYWORDS
+from tokenizer import RESERVED_KEYWORDS, TOK_ID
 from stmt import Stmt
 
 class StmtSeq:
@@ -23,7 +23,7 @@ class StmtSeq:
      
     # Helper function       
     def starts_stmt(self, token):
-        return token in (
+        return token == TOK_ID or token in (
             RESERVED_KEYWORDS["if"], 
             RESERVED_KEYWORDS["while"], 
             RESERVED_KEYWORDS["read"],
